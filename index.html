@@ -1,0 +1,26 @@
+<script>
+  
+  // Create an array of video game sound files
+const soundFiles = [
+  'sounds/mario_kick.wav',
+  'sounds/mario_snare.wav',
+  'sounds/mario_hihat.wav',
+  'sounds/zelda_shaker.wav',
+  'sounds/zelda_tom.wav',
+  'sounds/zelda_clap.wav'
+];
+
+// Create a sampler for each sound file
+const samplers = soundFiles.map(file => new Tone.Player(file).toDestination());
+
+// Create an array of buttons for each sound
+const buttons = document.querySelectorAll('.drum-pad__button');
+
+// Add a click event listener to each button
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    samplers[index].start();
+  });
+});
+  
+</script>
